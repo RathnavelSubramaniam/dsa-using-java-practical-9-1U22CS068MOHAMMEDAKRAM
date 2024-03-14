@@ -1,5 +1,5 @@
 import java.util.*;
-public class ArrayStack{	
+public class ArrayStack{    
 protected int capacity;
 // Array used to implement the stack.
 protected int[] stack;
@@ -17,19 +17,45 @@ public int size()
 // Inserts an element at the top of the stack. This method runs in O(1) time.
 public void push(int data) 
 {
+    if(isFull())
+        {
+            System.out.println("Stack is Overflow. Not possible to insert in Full stack");
+        }
+        else
+        {
+            ++top;
+            stack[top]=data;
+            System.out.println("Element is inserted");
+        }
 }
 // Inspects the element at the top of the stack. This method runs in O(1) time.
 public int pop() 
 {
-    //start your code
+    int data=-1;
+    if(isEmpty()) 
+    {
+        System.out.println("Stack is Overflow. Not possible to insert in Full stack");
+    }
+    else
+    {
+        data=stack[top];
+        --top;
+    }
+    return data;
 }
 public boolean isFull()
 {
-   //start your code
+   if(size()==capacity)
+       return true;
+   else
+       return false;
 }
 public boolean isEmpty()
 {
-    // start your code
+    if(top < 0)
+        return true;
+    else
+        return false;
 }
 public void display()
 {
@@ -37,7 +63,7 @@ public void display()
     System.out.println("Stack is Underflow. No elements to display in Empty Stack");
     else
     {
-     System.out.println("Stack Elements:Top of the Stack Element is");
+     System.out.println("Stack Elements");
     for(int i=top;i>=0;i--)
     System.out.println(stack[i]);
     }
@@ -71,6 +97,7 @@ public static void main(String[] args)
                 s.display();
                 break;
               } }while(ch<4);
+              
 }
 }
 
